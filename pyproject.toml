@@ -6,6 +6,8 @@ authors = ["Federico García <garciafedericoagustin@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+miniaudio = "^1.44"
+svgwrite = "^1.4.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
