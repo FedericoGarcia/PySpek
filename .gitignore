@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,windows,git
-# Edit at https://www.toptal.com/developers/gitignore?templates=python,visualstudiocode,windows,git
+# Created by https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,windows,git,github
+# Edit at https://www.toptal.com/developers/gitignore?templates=python,visualstudiocode,windows,git,github
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:
@@ -15,6 +15,8 @@
 *_BASE_*.txt
 *_LOCAL_*.txt
 *_REMOTE_*.txt
+
+#!! ERROR: github is undefined. Use list command to see defined gitignore types !!#
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
@@ -203,4 +205,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,windows,git
+# End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,windows,git,github
