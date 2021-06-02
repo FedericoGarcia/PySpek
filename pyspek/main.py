@@ -20,4 +20,15 @@ def ExtractChannelArray(channel: int, DecodedSoundFile: audio.DecodedSoundFile) 
         index = index + 1
     return channel_array
 
-print(ExtractChannelArray(channel = 1, DecodedSoundFile = audio_file))
+def GenerateTimeArray(DecodedSoundFile: audio.DecodedSoundFile) -> np.ndarray:
+    num_frames = DecodedSoundFile.num_frames
+    sample_rate = DecodedSoundFile.sample_rate
+    time_array = np.zeros(num_frames)
+    for index in range(num_frames):
+        time_array[index] = index / sample_rate # in seconds
+    return time_array
+
+x_axis = GenerateTimeArray(DecodedSoundFile = audio_file)
+y1_axis = ExtractChannelArray(channel = 1, DecodedSoundFile = audio_file)
+y2_axis = ExtractChannelArray(channel = 2, DecodedSoundFile = audio_file)
+
