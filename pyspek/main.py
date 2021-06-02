@@ -4,11 +4,7 @@ import matplotlib.pyplot as plt
 import miniaudio as audio
 
 audio_file_path = "pyspek/music.wav"
-
 audio_file = audio.decode_file(audio_file_path)
-
-samples = audio_file.samples
-nchannels = audio_file.nchannels
 
 def ExtractChannelArray(channel: int, DecodedSoundFile: audio.DecodedSoundFile) -> np.ndarray:
     if channel < 1:
