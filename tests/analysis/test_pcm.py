@@ -65,3 +65,11 @@ def test_GenerateTimeArray_2_channels():
     time = np.array([0, 0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009])
 
     assert np.testing.assert_equal(GenerateTimeArray(audio_file), time) is None
+
+def test_GenerateTimeArray_3_channels():
+    samples = audio.array.array("b", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21])
+    audio_file = audio.DecodedSoundFile("test", 3, 1000, audio.SampleFormat.SIGNED16, samples)
+
+    time = np.array([0, 0.001, 0.002, 0.003, 0.004, 0.005, 0.006])
+
+    assert np.testing.assert_equal(GenerateTimeArray(audio_file), time) is None
