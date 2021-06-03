@@ -31,3 +31,17 @@ def test_ExtractChannelArrays_3_channels():
     assert np.testing.assert_equal(ExtractChannelArray(1, audio_file).astype(int), channel_1) is None
     assert np.testing.assert_equal(ExtractChannelArray(2, audio_file).astype(int), channel_2) is None
     assert np.testing.assert_equal(ExtractChannelArray(3, audio_file).astype(int), channel_3) is None
+
+def test_ExtractChannelArrays_4_channels():
+    samples = audio.array.array("b", [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
+    audio_file = audio.DecodedSoundFile("test", 4, 48000, audio.SampleFormat.SIGNED16, samples)
+
+    channel_1 = np.array([-10, -6, -2, 2, 6, 10])
+    channel_2 = np.array([-9, -5, -1, 3, 7, 11])
+    channel_3 = np.array([-8, -4, 0, 4, 8, 12])
+    channel_4 = np.array([-7, -3, 1, 5, 9, 13])
+
+    assert np.testing.assert_equal(ExtractChannelArray(1, audio_file).astype(int), channel_1) is None
+    assert np.testing.assert_equal(ExtractChannelArray(2, audio_file).astype(int), channel_2) is None
+    assert np.testing.assert_equal(ExtractChannelArray(3, audio_file).astype(int), channel_3) is None
+    assert np.testing.assert_equal(ExtractChannelArray(4, audio_file).astype(int), channel_4) is None
