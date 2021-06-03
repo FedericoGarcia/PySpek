@@ -2,6 +2,8 @@ from pyspek.analysis.pcm import *
 import numpy as np
 import miniaudio as audio
 
+# pyspek.analysis.pcm.ExtractChannelArrays()
+
 def test_ExtractChannelArrays_1_channel():
     samples = audio.array.array("b", [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
     audio_file = audio.DecodedSoundFile("test", 1, 48000, audio.SampleFormat.SIGNED16, samples)
@@ -45,3 +47,13 @@ def test_ExtractChannelArrays_4_channels():
     assert np.testing.assert_equal(ExtractChannelArray(2, audio_file).astype(int), channel_2) is None
     assert np.testing.assert_equal(ExtractChannelArray(3, audio_file).astype(int), channel_3) is None
     assert np.testing.assert_equal(ExtractChannelArray(4, audio_file).astype(int), channel_4) is None
+
+# pyspek.analysis.pcm.GenerateTimeArray()
+
+def test_GenerateTimeArray_1_channel():
+    samples = audio.array.array("b", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
+    audio_file = audio.DecodedSoundFile("test", 1, 1000, audio.SampleFormat.SIGNED16, samples)
+
+    time = np.array([0, 0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009, 0.01, 0.011, 0.012, 0.013, 0.014, 0.015, 0.016, 0.017, 0.018, 0.019])
+
+    assert np.testing.assert_equal(GenerateTimeArray(audio_file), time) is None
