@@ -41,8 +41,8 @@ jobs:
         poetry run python -m pytest -v tests/
 
     - name: Build
-          run: |
-            poetry run python pyspek/main.py
+      run: |
+        poetry run python pyspek/main.py
 
   macOS:
 
@@ -78,8 +78,8 @@ jobs:
         poetry run python -m pytest -v tests/
 
     - name: Build
-          run: |
-            poetry run python pyspek/main.py
+      run: |
+        poetry run python pyspek/main.py
 
   Windows:
 
@@ -115,5 +115,5 @@ jobs:
         poetry run python -m pytest -v tests/
 
     - name: Build
-          run: |
-            poetry run python pyspek/main.py
+      run: |
+        poetry run python pyspek/main.py
