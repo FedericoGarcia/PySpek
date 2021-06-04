@@ -15,10 +15,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       
-    - name: Install Python 3.6
+    - name: Install Python 3.7
       uses: actions/setup-python@v2
       with:
-        python-version: 3.6
+        python-version: 3.7
     
     - name: Upgrade pip
       run: |
