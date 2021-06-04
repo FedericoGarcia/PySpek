@@ -33,4 +33,4 @@ jobs:
     
     - name: Test
       run: |
-        poetry run python -m pytest -v .\tests\
+        poetry run python -m pytest -v tests/
