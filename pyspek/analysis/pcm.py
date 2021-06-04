@@ -23,4 +23,3 @@ def GenerateTimeArray(DecodedSoundFile: audio.DecodedSoundFile) -> np.ndarray:
     for index in range(samples_per_channel):
         time_array[index] = index / sample_rate # in seconds
     return time_array
-
