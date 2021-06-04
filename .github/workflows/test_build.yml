@@ -10,7 +10,7 @@ jobs:
   Ubuntu:
 
     runs-on: ${{ matrix.os }}
-    
+
     strategy:
       matrix:
         os: [ubuntu-18.04, ubuntu-20.04]
@@ -47,7 +47,7 @@ jobs:
   macOS:
 
     runs-on: ${{ matrix.os }}
-    
+
     strategy:
       matrix:
         os: [macos-10.15]
@@ -84,7 +84,7 @@ jobs:
   Windows:
 
     runs-on: ${{ matrix.os }}
-    
+
     strategy:
       matrix:
         os: [windows-2016, windows-2019]
