@@ -11,8 +11,8 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     
-    strategy: 
-      matrix: 
+    strategy:
+      matrix:
         os: [ubuntu-18.04, ubuntu-20.04]
         python-version: [3.7, 3.8, 3.9]
 
@@ -48,8 +48,8 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     
-    strategy: 
-      matrix: 
+    strategy:
+      matrix:
         os: [macos-10.15]
         python-version: [3.7, 3.8, 3.9]
 
@@ -85,8 +85,8 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     
-    strategy: 
-      matrix: 
+    strategy:
+      matrix:
         os: [windows-2016, windows-2019]
         python-version: [3.7, 3.8, 3.9]
 
