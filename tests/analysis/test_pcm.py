@@ -1,4 +1,4 @@
-from pyspek.analysis.pcm import *
+from pyspek.analysis.pcm import ExtractChannelArray, GenerateTimeArray
 import numpy as np
 import miniaudio as audio
 
