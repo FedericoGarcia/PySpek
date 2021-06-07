@@ -1,5 +1,5 @@
-import numpy
 import miniaudio
+import numpy
 
 def ExtractChannelArray(channel: int, DecodedSoundFile: miniaudio.DecodedSoundFile) -> numpy.ndarray:
     if channel < 1:
@@ -23,3 +23,20 @@ def GenerateTimeArray(DecodedSoundFile: miniaudio.DecodedSoundFile) -> numpy.nda
     for index in range(samples_per_channel):
         time_array[index] = index / sample_rate
     return time_array
+
+'''
+def NormalizeSampleArray(sample: numpy.ndarray) -> numpy.ndarray:
+    return sample / numpy.linalg.norm(sample)
+'''
+
+def MultichannelArray(DecodedSoundFile: miniaudio.DecodedSoundFile):
+    number_of_channels = DecodedSoundFile.nchannels
+    samples_per_channel = DecodedSoundFile.num_frames
+    multichannel = numpy.zeros(shape = (number_of_channels, samples_per_channel))
+    for index in range(number_of_channels):
+        multichannel[index] = ExtractChannelArray(index + 1, DecodedSoundFile)
+    return multichannel
+
+def ConvertToMono(DecodedSoundFile: miniaudio.DecodedSoundFile) -> numpy.ndarray:
+    multichannel = MultichannelArray(DecodedSoundFile)
+    return numpy.sum(multichannel / DecodedSoundFile.nchannels, axis = 0)
