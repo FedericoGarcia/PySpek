@@ -10,7 +10,14 @@ Spek (https://github.com/alexkay/spek/) created by Alexander Kojevnikov.
 
 ------------------------------------------------------------------------
 
+Installation
+------------
 
+Licence
+-------
+
+Contributing
+------------
 
 .. |CodeFactor| image:: https://www.codefactor.io/repository/github/federicogarcia/pyspek/badge
    :target: https://www.codefactor.io/repository/github/federicogarcia/pyspek
