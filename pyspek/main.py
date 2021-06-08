@@ -6,7 +6,7 @@ import pyspek.analysis.pcm
 import pyspek.analysis.spectrum_analyzer
 import scipy.fft
 
-audio_file_path = "pyspek/sound.wav"
+audio_file_path = "pyspek/music.wav"
 audio_file = miniaudio.decode_file(audio_file_path) # converts to 16 bits signed samples if not specify!! (even using WAVs)
 
 def PlotAmplitudeVsTime(DecodedSoundFile: miniaudio.DecodedSoundFile):
@@ -68,26 +68,25 @@ time = pyspek.analysis.pcm.GenerateTimeArray(audio_file)
 mono = pyspek.analysis.pcm.ConvertToMono(audio_file)
 
 sample_rate = audio_file.sample_rate
-frequency_bins = int(sample_rate/2)
+#half_sample_rate = int(sample_rate/2)
 bit_depth = audio_file.sample_width * 8
-buffer_size = 2**10 # 1024
+buffer_size = 1024
 number_of_buffer_divisions = int(numpy.ceil(audio_file.num_frames / buffer_size))
 
 frequencies = scipy.fft.rfftfreq(buffer_size, 1/sample_rate)
-spectrum = numpy.zeros(shape = (number_of_buffer_divisions, frequency_bins))
+spectrum = numpy.zeros(shape = (number_of_buffer_divisions, frequencies.size))
 
 for division in range(0, number_of_buffer_divisions):
-    spectrum[division] = numpy.absolute(scipy.fft.rfft(mono[buffer_size*division:buffer_size*(division+1)], buffer_size) / buffer_size)
+    spectrum[division] = pyspek.analysis.spectrum_analyzer.dBFS(numpy.absolute(scipy.fft.rfft(mono[buffer_size*division:buffer_size*(division+1)], buffer_size) / buffer_size), bit_depth)
 
-
-'''
 matplotlib.pyplot.figure()
-
+matplotlib.pyplot.subplots_adjust(left = 0, bottom = 0, right = 1, top = 1, wspace = 0, hspace = 0)
 matplotlib.pyplot.subplot(2, 1, 1)
+matplotlib.pyplot.margins(0)
 matplotlib.pyplot.plot(time, mono)
-
 matplotlib.pyplot.subplot(2, 1, 2)
-matplotlib.pyplot.subplots()[1].pcolormesh(numpy.matrix(spectrum))
-
+matplotlib.pyplot.set_cmap("turbo")
+#matplotlib.pyplot.yscale("log")
+matplotlib.pyplot.pcolormesh(numpy.transpose(spectrum))
+#matplotlib.pyplot.colorbar()
 matplotlib.pyplot.show()
-'''

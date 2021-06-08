@@ -9,4 +9,5 @@ def FrequencyPowerArray(sample_buffer: numpy.ndarray) -> numpy.ndarray:
 
 
 def dBFS(magnitude: int, bit_depth: int) -> float:
+    magnitude = magnitude + 1
     return 20*numpy.log10(abs(magnitude)/(2**(bit_depth-1)-1))
