@@ -1,7 +1,6 @@
 import matplotlib.pyplot
 import miniaudio
 import numpy
-from numpy.lib.nanfunctions import _nancumsum_dispatcher
 import pyspek.analysis.pcm
 import pyspek.analysis.spectrum_analyzer
 import scipy.fft
