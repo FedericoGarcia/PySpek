@@ -1,12 +1,21 @@
 import matplotlib.pyplot
 import miniaudio
 import numpy
+import pyspek.core.audio
 import pyspek.analysis.pcm
 import pyspek.analysis.spectrum_analyzer
 import scipy.fft
 
-audio_file_path = "pyspek/music.wav"
+audio_file_path = "pyspek/resources/music.wav"
+#audio_file_path = "pyspek/resources/sound.wav"
 audio_file = miniaudio.decode_file(audio_file_path) # converts to 16 bits signed samples if not specify!! (even using WAVs)
+
+audio_data = pyspek.core.audio.Data(16, 44100, pyspek.analysis.pcm.MultichannelArray(audio_file))
+
+
+
+
+'''
 
 def PlotAmplitudeVsTime(DecodedSoundFile: miniaudio.DecodedSoundFile):
     number_of_channels = DecodedSoundFile.nchannels
@@ -63,6 +72,7 @@ def PlotSpectrogram(DecodedSoundFile: miniaudio.DecodedSoundFile):
     matplotlib.pyplot.show()
 
 
+
 time = pyspek.analysis.pcm.GenerateTimeArray(audio_file)
 mono = pyspek.analysis.pcm.ConvertToMono(audio_file)
 
@@ -89,3 +99,5 @@ matplotlib.pyplot.set_cmap("turbo")
 matplotlib.pyplot.pcolormesh(numpy.transpose(spectrum))
 #matplotlib.pyplot.colorbar()
 matplotlib.pyplot.show()
+
+'''
