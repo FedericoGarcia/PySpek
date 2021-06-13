@@ -9,11 +9,11 @@ def decode_file(audio_file_path = str) -> pyspek.dsp.core.audio.Data:
     sample_rate = 44100
     channels_count = audio_file.nchannels
     channel_samples_count = audio_file.num_frames
+    total_samples_count = channels_count * channel_samples_count
 
     samples = numpy.zeros(shape = (channels_count, channel_samples_count))
-    
-    for sample in range(channel_samples_count):
-        for channel in range(channels_count):
-            samples[channel][sample] = pcm_samples[channel*sample]
+
+    for sample in range(total_samples_count):
+        samples[sample % channels_count][numpy.floor(sample / channels_count)] = pcm_samples[sample]
 
     return pyspek.dsp.core.audio.Data(bit_depth, sample_rate, samples)
