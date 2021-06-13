@@ -1,5 +1,6 @@
 import miniaudio
 import numpy
+import pyspek.dsp.core.audio
 
 def ExtractChannelArray(channel: int, DecodedSoundFile: miniaudio.DecodedSoundFile) -> numpy.ndarray:
     if channel < 1:
@@ -16,6 +17,23 @@ def ExtractChannelArray(channel: int, DecodedSoundFile: miniaudio.DecodedSoundFi
         index = index + 1
     return channel_array
 
+def decode_file(audio_file_path = str) -> pyspek.dsp.core.audio.Data:
+    audio_file = miniaudio.decode_file(audio_file_path)
+    pcm_samples = audio_file.samples
+    bit_depth = 16
+    sample_rate = 44100
+    channels_count = audio_file.nchannels
+    channel_samples_count = audio_file.num_frames
+
+    samples = numpy.zeros(shape = (channels_count, channel_samples_count))
+    
+    for sample in pcm_samples:
+        for channel in samples
+        samples[channel][sample] = 
+
+    return pyspek.dsp.core.audio.Data(bit_depth, sample_rate, samples)
+
+
 def GenerateTimeArray(DecodedSoundFile: miniaudio.DecodedSoundFile) -> numpy.ndarray:
     samples_per_channel = DecodedSoundFile.num_frames
     sample_rate = DecodedSoundFile.sample_rate
@@ -24,19 +42,8 @@ def GenerateTimeArray(DecodedSoundFile: miniaudio.DecodedSoundFile) -> numpy.nda
         time_array[index] = index / sample_rate
     return time_array
 
-'''
-def NormalizeSampleArray(sample: numpy.ndarray) -> numpy.ndarray:
-    return sample / numpy.linalg.norm(sample)
-'''
 
-def MultichannelArray(DecodedSoundFile: miniaudio.DecodedSoundFile):
-    number_of_channels = DecodedSoundFile.nchannels
-    samples_per_channel = DecodedSoundFile.num_frames
-    multichannel = numpy.zeros(shape = (number_of_channels, samples_per_channel))
-    for index in range(number_of_channels):
-        multichannel[index] = ExtractChannelArray(index + 1, DecodedSoundFile)
-    return multichannel
 
-def ConvertToMono(DecodedSoundFile: miniaudio.DecodedSoundFile) -> numpy.ndarray:
-    multichannel = MultichannelArray(DecodedSoundFile)
-    return numpy.sum(multichannel / DecodedSoundFile.nchannels, axis = 0)
+
+
+

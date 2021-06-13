@@ -1,16 +1,16 @@
 import matplotlib.pyplot
 import miniaudio
 import numpy
-import pyspek.core.audio
-import pyspek.analysis.pcm
+import pyspek.dsp.core.audio
+import pyspek.dsp.io.decode
 import pyspek.analysis.spectrum_analyzer
 import scipy.fft
 
-audio_file_path = "pyspek/resources/music.wav"
-#audio_file_path = "pyspek/resources/sound.wav"
+audio_file_path = "resources/music.wav"
+#audio_file_path = "resources/sound.wav"
 audio_file = miniaudio.decode_file(audio_file_path) # converts to 16 bits signed samples if not specify!! (even using WAVs)
 
-audio_data = pyspek.core.audio.Data(16, 44100, pyspek.analysis.pcm.MultichannelArray(audio_file))
+audio_data = pyspek.dsp.core.audio.Data(16, 44100, pyspek.dsp.io.decode.MultichannelArray(audio_file))
 
 
 
